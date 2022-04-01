@@ -15,7 +15,14 @@
             "name": "Launch Chrome with params",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost:3000/docs/index.html?occasion=Mother%27s+Day&to=Amy&from=Benjamin%20and%20Christopher&color=skyblue&note=we+love+you",
+            "url": "http://localhost:3000/docs/index.html?to=Mom&from=Ben&occasion=Mothers+Day&note=I+love+you.&color=%23ffffff&encrypt=false",
+            "webRoot": "${workspaceFolder}/docs"
+        },
+        {
+            "name": "Launch Chrome with params and encrypted",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://localhost:3000/docs/index.html?message=&encrypt=true",
             "webRoot": "${workspaceFolder}/docs"
         }
     ]

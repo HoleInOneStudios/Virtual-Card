@@ -3,6 +3,7 @@ let from;
 let color;
 let occasion;
 let note;
+
 let titleEl;
 let fromEl;
 let noteEl;
@@ -15,8 +16,10 @@ function start() {
     occasion = searchParams.get('occasion') || "Special Day";
     color = searchParams.get('color') || "white";
     note = searchParams.get('note') || "";
+    encryptedMessage = searchParams.get('message') || "";
+    encrypted = Boolean(searchParams.get('encrypt')) || false;
 
-    console.table({ "to": to, "from": from, "occasion": occasion, "color": color });
+    console.table({ "to": to, "from": from, "occasion": occasion, "color": color , "note": note, "encrypted": encrypted, "encryptedMessage": encryptedMessage });
 
     titleEl = document.getElementById('title');
     titleEl.innerText = `Happy ${occasion}, ${to}!`;
