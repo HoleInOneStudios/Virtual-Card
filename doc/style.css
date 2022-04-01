@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 99vh;
+    border: 3px solid green;
+    margin: auto;
+
+    text-align: center;
+
+    font-family: 'Roboto', sans-serif;
+    text-decoration: solid;
+    font-size: xx-large;
+}
+
+h1 {
+    animation: stroke 2s infinite ease-in-out;
+}
+
+p {
+    animation: stroke 2s infinite ease-in-out;
+}
+
+@keyframes stroke {
+    0% {
+        -webkit-text-stroke: white .1rem;
+    }
+    50%{
+        -webkit-text-stroke: silver .1rem;
+    }
+    100% {
+        -webkit-text-stroke: white .1rem;
+    }
+}
