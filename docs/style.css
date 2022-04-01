@@ -15,6 +15,14 @@ body {
 
 h1 {
     animation: stroke 2s infinite ease-in-out;
+    margin-bottom: 0%;
+}
+
+h3 {
+    animation: stroke 2s infinite ease-in-out;
+    margin-top: 0%;
+
+    font-style: italic;
 }
 
 p {

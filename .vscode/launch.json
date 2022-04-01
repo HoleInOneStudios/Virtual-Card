@@ -15,7 +15,7 @@
             "name": "Launch Chrome with params",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost:3000/docs/index.html?occasion=Mother%27s+Day&to=Amy&from=Benjamin%20and%20Christopher&color=skyblue",
+            "url": "http://localhost:3000/docs/index.html?occasion=Mother%27s+Day&to=Amy&from=Benjamin%20and%20Christopher&color=skyblue&note=we+love+you",
             "webRoot": "${workspaceFolder}/docs"
         }
     ]
