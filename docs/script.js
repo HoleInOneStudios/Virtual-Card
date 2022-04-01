@@ -21,5 +21,7 @@ function start() {
     fromEl = document.getElementById('from');
     fromEl.innerText = `From ${from}`;
 
+    document.title = `${occasion} Card`;
+
     document.body.style.backgroundColor = color;
 }
