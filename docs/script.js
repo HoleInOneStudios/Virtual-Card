@@ -1,17 +1,22 @@
-let mother;
+let to;
 let from;
 let color;
+let occasion;
 let titleEl;
 let fromEl;
 
 function start() {
-    mother = new URLSearchParams(window.location.search).get('mother') || "Mom";
-    from = new URLSearchParams(window.location.search).get('from') || "Your Child";
-    color = new URLSearchParams(window.location.search).get('color') || "white";
-    console.log(mother, from, color);
+    let searchParams = new URLSearchParams(window.location.search);
+
+    to = searchParams.get('to') || "You";
+    from = searchParams.get('from') || "Me";
+    occasion = searchParams.get('occasion') || "Special Day";
+    color = searchParams.get('color') || "white";
+
+    console.table({ "to": to, "from": from, "occasion": occasion, "color": color });
 
     titleEl = document.getElementById('title');
-    titleEl.innerText = `Happy Mother's Day, ${mother}!`;
+    titleEl.innerText = `Happy ${occasion}, ${to}!`;
 
     fromEl = document.getElementById('from');
     fromEl.innerText = `From ${from}`;

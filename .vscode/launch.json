@@ -8,15 +8,15 @@
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost:3000/doc/index.html",
-            "webRoot": "${workspaceFolder}/doc"
+            "url": "http://localhost:3000/docs/index.html",
+            "webRoot": "${workspaceFolder}/docs"
         },
         {
             "name": "Launch Chrome with params",
             "request": "launch",
             "type": "chrome",
-            "url": "http://localhost:3000/doc/index.html?mother=Amy&from=Ben",
-            "webRoot": "${workspaceFolder}/doc"
+            "url": "http://localhost:3000/docs/index.html?occasion=Mother%27s+Day&to=Amy&from=Benjamin%20and%20Christopher&color=skyblue",
+            "webRoot": "${workspaceFolder}/docs"
         }
     ]
 }
