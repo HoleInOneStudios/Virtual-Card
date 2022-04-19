@@ -17,24 +17,22 @@ let noteEl;
 function start() {
     let searchParams = new URLSearchParams(window.location.search);
 
+    message.to = searchParams.get('to') || "You";
+    message.from = searchParams.get('from') || "Me";
+    message.occasion = searchParams.get('occasion') || "Special Day";
+    message.color = searchParams.get('color') || "white";
+    message.note = searchParams.get('note') || "";
     encryptedMessage = searchParams.get('message') || "";
     encrypted = searchParams.get('encrypt') == 'true';
 
     if (encrypted) {
         decryptedMessage = JSON.parse(atob(encryptedMessage));
 
-        message.to = decryptedMessage.to;
-        message.from = decryptedMessage.from;
-        message.occasion = decryptedMessage.occasion;
-        message.color = decryptedMessage.color;
-        message.note = decryptedMessage.note;
-    }
-    else {
-        message.to = searchParams.get('to') || "You";
-        message.from = searchParams.get('from') || "Me";
-        message.occasion = searchParams.get('occasion') || "Special Day";
-        message.color = searchParams.get('color') || "white";
-        message.note = searchParams.get('note') || "";
+        message.to = decryptedMessage.to || message.to;
+        message.from = decryptedMessage.from || message.from;
+        message.occasion = decryptedMessage.occasion || message.occasion;
+        message.color = decryptedMessage.color || message.color;
+        message.note = decryptedMessage.note || message.note;
     }
 
     //console.table({ "to": message.to, "from": message.from, "occasion": message.occasion, "color": message.color, "note": message.note, "encrypted": encrypted, "encryptedMessage": encryptedMessage });
