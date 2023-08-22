@@ -1,0 +1,17 @@
+form {
+    display: flex;
+    flex-direction: column;
+
+    background: silver;
+    color: black;
+
+    /**
+    Center and align the form on the page
+    */
+    margin: 0 auto;
+    max-width: 320px;
+    padding: 32px;
+    width: 100%;
+    border-radius: 10px;
+    
+}

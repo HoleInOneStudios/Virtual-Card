@@ -12,9 +12,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
     </head>
 
     <body>
+
+        <form action="/" method="post" onsubmit="submit(event);">
+            <label for="name">Name:</label>
+            <input id="name" type="text">
+            <label for="occasion">Occasion:</label>
+            <input id="occasion" type="text">
+            <label for="message">Message:</label>
+            <input id="message" type="text">
+            <label for="obfuscate">Obfuscate URL:</label>
+            <input id="obfuscate" type="checkbox">
+            <input type="submit" type="Submit">
+        </form>
 
     </body>
 
