@@ -12,22 +12,34 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="style.css">
-        <script src="script.js"></script>
+        <script src="script.js" defer></script>
     </head>
 
-    <body>
+    <body onload="load()">
 
-        <form action="/" method="post" onsubmit="submit(event);">
-            <label for="name">Name:</label>
-            <input id="name" type="text">
-            <label for="occasion">Occasion:</label>
-            <input id="occasion" type="text">
-            <label for="message">Message:</label>
-            <input id="message" type="text">
-            <label for="obfuscate">Obfuscate URL:</label>
-            <input id="obfuscate" type="checkbox">
+        <form onsubmit="submitForm(event)" method="post">
+            <label for ="form_sender">Sender:</label>
+            <input id="form_sender" name="sender" type="text">
+
+            <label for="form_reciever">Recipiant:</label>
+            <input id="form_reciever" name="reciever" type="text">
+
+            <label for="form_occasion">Occasion:</label>
+            <input id="form_occasion" name="occasion" type="text">
+
+            <label for="form_message">Message:</label>
+            <input id="form_message" name="message" type="text">
+
+            <label for="form_obfuscate">Obfuscate URL:</label>
+            <input id="form_obfuscate" name="obfuscate" type="checkbox">
+
             <input type="submit" type="Submit">
         </form>
+
+        <div>
+            <h1>Happy <span id="occasion">{occasion}</span> to <span id="reciever">{reciever}</span> from <span id="sender">{sender}</span>!</h1>
+            <h2><span id="message">{message}</span></h2>
+        </div>
 
     </body>
 

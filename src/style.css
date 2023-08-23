@@ -13,5 +13,25 @@ form {
     padding: 32px;
     width: 100%;
     border-radius: 10px;
+
+    position: fixed;
+    left: 25%;
+    right: 25%;
     
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    text-align: center;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+h2 {
+    text-transform: uppercase;
 }
