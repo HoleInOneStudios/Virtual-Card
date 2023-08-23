@@ -3,7 +3,10 @@ let form, display;
 function load() {
   form = document.querySelector("form");
   display = document.querySelector("div");
-  data = undefined;
+  /**
+   * @type {{sender: string, reciever: string, occasion: string, message: string, obfuscate: boolean}}
+   */
+  let data = undefined;
 
   url = new URL(window.location.href);
 
@@ -24,8 +27,6 @@ function load() {
       message: data[3],
       obfuscate: true,
     };
-
-    console.log(data);
 
     /**
      * the form is hidden because the data is already set
@@ -68,11 +69,23 @@ function load() {
   }
 }
 
+/**
+ * @param {SubmitEvent} e
+ *
+ * This function is called when the form is submitted.
+ * It prevents the default action of the form.
+ * It then gets the data from the form and sets the data object to the data.
+ * The data is then encoded and set to the url.
+ * The page is then reloaded with the new url.
+ */
 function submitForm(e) {
   e.preventDefault();
 
   const formData = new FormData(form);
-  data = {
+  /**
+   * @type {{sender: string, reciever: string, occasion: string, message: string, obfuscate: boolean}}
+   */
+  let data = {
     sender:
       formData.get("sender") === "" ? "Anonymous" : formData.get("sender"),
     reciever:
@@ -94,16 +107,27 @@ function submitForm(e) {
 
   url_params = `?`;
   if (data.obfuscate) {
+    /**
+     * If the obfuscate parameter is set to true, then the data is encoded and set to the url
+     * The obfuscate parameter is also set to true
+     * The data is encoded using base64
+     */
     url_params += `obfuscate=true&`;
     coded = btoa(form_params);
 
     url_params += `data=${coded}`;
   } else {
+    /**
+     * If the obfuscate parameter is set to false, then the data is set to the url
+     * The obfuscate parameter is also set to false
+     * The data is not encoded
+     */
     url_params += `obfuscate=false&`;
     url_params += form_params;
   }
 
-  //console.log(url_params);
-
+  /**
+   * The page is reloaded with the new url
+   */
   window.location.href = window.location.href.split("?")[0] + url_params;
 }

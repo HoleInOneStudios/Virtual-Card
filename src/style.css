@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Happy Monkey';
+    src: url('./HappyMonkey-Regular.ttf');
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -14,9 +19,13 @@ form {
     width: 100%;
     border-radius: 10px;
 
-    position: fixed;
-    left: 25%;
-    right: 25%;
+    z-index: 10;
+
+    position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     
 }
 
@@ -26,6 +35,14 @@ div {
     justify-content: center;
 
     text-align: center;
+
+    font-family: 'Happy Monkey', cursive;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 h1 {
