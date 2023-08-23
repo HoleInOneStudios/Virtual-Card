@@ -4,7 +4,7 @@ function load() {
   form = document.querySelector("form");
   display = document.querySelector("div");
   /**
-   * @type {{sender: string, reciever: string, occasion: string, message: string, obfuscate: boolean}}
+   * @type {{sender: string, reciever: string, occasion: string, message: string, color: string, obfuscate: boolean}}
    */
   let data = undefined;
 
@@ -20,18 +20,15 @@ function load() {
   ) {
     data = atob(url.searchParams.get("data")).split("&");
     data = data.map((item) => item.split("=")[1]);
+    console.log(data);
     data = {
       sender: data[0],
       reciever: data[1],
       occasion: data[2],
       message: data[3],
+      color: data[4],
       obfuscate: true,
     };
-
-    /**
-     * the form is hidden because the data is already set
-     */
-    form.style.display = "none";
   } else if (
     /**
      * If the url has the obfuscate parameter set to false and the sender, reciever, occasion and message parameters are not null,
@@ -41,15 +38,18 @@ function load() {
     url.searchParams.get("sender") !== null &&
     url.searchParams.get("reciever") !== null &&
     url.searchParams.get("occasion") !== null &&
-    url.searchParams.get("message") !== null
+    url.searchParams.get("message") !== null &&
+    url.searchParams.get("color") !== null
   ) {
     data = {
       sender: url.searchParams.get("sender"),
       reciever: url.searchParams.get("reciever"),
       occasion: url.searchParams.get("occasion"),
       message: url.searchParams.get("message"),
+      color: url.searchParams.get("color"),
       obfuscate: false,
     };
+    console.log(data);
   }
 
   if (data !== undefined) {
@@ -57,7 +57,6 @@ function load() {
      * the form is hidden because the data is already set
      */
     form.style.display = "none";
-
     /**
      * Populate the display with the data
      * The data is set to the innerText of the display
@@ -66,6 +65,12 @@ function load() {
     document.querySelector("#message").innerText = data.message;
     document.querySelector("#sender").innerText = data.sender;
     document.querySelector("#reciever").innerText = data.reciever;
+    document.body.style.backgroundColor = "#" + data.color;
+    document.body.style.color = pickTextColorBasedOnBgColorSimple(
+      "#" + data.color,
+      "#ffffff",
+      "#000000"
+    );
   }
 }
 
@@ -83,7 +88,7 @@ function submitForm(e) {
 
   const formData = new FormData(form);
   /**
-   * @type {{sender: string, reciever: string, occasion: string, message: string, obfuscate: boolean}}
+   * @type {{sender: string, reciever: string, occasion: string, message: string, color: string, obfuscate: boolean}}
    */
   let data = {
     sender:
@@ -91,9 +96,10 @@ function submitForm(e) {
     reciever:
       formData.get("reciever") === "" ? "You" : formData.get("reciever"),
     occasion:
-      formData.get("occasion") === "" ? "Occasion" : formData.get("occasion"),
-    message:
-      formData.get("message") === "" ? "Message" : formData.get("message"),
+      formData.get("occasion") === "" ? "{Occasion}" : formData.get("occasion"),
+    message: formData.get("message") === "" ? "" : formData.get("message"),
+    color:
+      formData.get("color") === "" ? "ffffff" : formData.get("color").slice(1),
     obfuscate: formData.get("obfuscate") === "on" ? true : false,
   };
 
@@ -102,6 +108,7 @@ function submitForm(e) {
   form_params += `reciever=${data.reciever}&`;
   form_params += `occasion=${data.occasion}&`;
   form_params += `message=${data.message}&`;
+  form_params += `color=${data.color}&`;
 
   form_params = form_params.slice(0, -1);
 
@@ -130,4 +137,25 @@ function submitForm(e) {
    * The page is reloaded with the new url
    */
   window.location.href = window.location.href.split("?")[0] + url_params;
+}
+
+/**
+ * @param {string} bgColor
+ * @param {string} lightColor
+ * @param {string} darkColor
+ * @returns {string} color
+ *
+ * This function is used to determine the color of the text based on the background color
+ * It takes in the background color, the light color and the dark color
+ * It then converts the background color to rgb and determines if the color is light or dark
+ * If the color is light, then the dark color is returned
+ * If the color is dark, then the light color is returned
+ * The color is returned
+ */
+function pickTextColorBasedOnBgColorSimple(bgColor, lightColor, darkColor) {
+  var color = bgColor.charAt(0) === "#" ? bgColor.substring(1, 7) : bgColor;
+  var r = parseInt(color.substring(0, 2), 16); // hexToR
+  var g = parseInt(color.substring(2, 4), 16); // hexToG
+  var b = parseInt(color.substring(4, 6), 16); // hexToB
+  return r * 0.299 + g * 0.587 + b * 0.114 > 186 ? darkColor : lightColor;
 }
