@@ -14,15 +14,13 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      actions: write
 
     steps:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v4
-        # https://github.com/actions/checkout#usage
-          with:
-            token: ${{ secrets.PAT_TOKEN }}
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2
