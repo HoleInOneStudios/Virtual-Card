@@ -14,18 +14,17 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      actions: write
-      
 
     steps:
       # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.MOVED_CLASSIC_PAT_TOKEN }}
+        # https://github.com/actions/checkout#usage
+        # uncomment if you use submodules within the repository
+        # with:
+        #   submodules: true
 
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_repo_path: HoleInOneStudios/Repo-Template
+          - source_repo_path: HoleInOneStudios/Repo-Template
