@@ -20,6 +20,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          repository: ${{ github.repository }}
           token: ${{ secrets.PAT_TOKEN }}
 
       - name: actions-template-sync
