@@ -26,7 +26,7 @@ jobs:
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.OLD_PAT_TOKEN }}
           source_repo_path: HoleInOneStudios/Repo-Template
           upstream_branch: main # defaults to main
           pr_labels: template_sync # defaults to template_sync
