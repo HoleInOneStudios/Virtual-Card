@@ -21,11 +21,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{ github.repository }}
+          token: ${{ secrets.OLD_PAT_TOKEN }}
 
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2
         with:
-          github_token: ${{ secrets.PAT_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           source_repo_path: HoleInOneStudios/Repo-Template
           upstream_branch: main # defaults to main
           pr_labels: template_sync # defaults to template_sync
