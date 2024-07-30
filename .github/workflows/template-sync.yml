@@ -21,9 +21,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         # https://github.com/actions/checkout#usage
-        # uncomment if you use submodules within the repository
-        with:
-          token: ${{ secrets.PAT_TOKEN }}
+          with:
+            token: ${{ secrets.PAT_TOKEN }}
 
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2
