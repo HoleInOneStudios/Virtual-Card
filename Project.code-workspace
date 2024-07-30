@@ -1,16 +1,20 @@
 {
     "folders": [
         {
-            "path": "."
+            "path": ".",
+            "name": "Root"
         },
         {
-            "path": "src"
+            "path": "src",
+            "name": "Source Code"
         },
         {
-            "path": "docs"
+            "path": "docs",
+            "name": "Documentation"
         },
         {
-            "path": ".github"
+            "path": ".github",
+            "name": "GitHub Configurations"
         }
     ],
     "settings": {
