@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secreats.MOVED_CLASSIC_PAT_TOKEN }}
+          token: ${{ secrets.MOVED_CLASSIC_PAT_TOKEN }}
 
       - name: actions-template-sync
         uses: AndreasAugustin/actions-template-sync@v2
